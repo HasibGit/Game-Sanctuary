@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="admin-welcome">
+    <h1>All Orders</h1>
+  </div>
+  <%-include('./partials/messages.ejs')%>
+  <table class="table mt-5">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Order Type</th>
+        <th scope="col">Transaction ID</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(function(order){ %>
+      <tr>
+        <td scope="row"><%= order.customer_name %></td>
+        <td scope="row"><%= order.product_name %></td>
+        <td scope="row"><%= order.price %> TK</td>
+        <td scope="row"><%= order.order_type %></td>
+        <% if(order.transaction_id === ''){ %>
+        <td scope="row">None</td>
+        <% }else{ %>
+        <td scope="row"><%= order.transaction_id %></td>
+        <% } %>
+        <td scope="row">
+          <a href="/admin/sendEmail/<%=order._id%>" class="btn btn-info">Send Email</a>
+          <%  if(order.order_type === "rent"){ %>
+          <a href="/admin/sendToRent/<%=order._id%>" class="btn btn-success">Send To Rent List</a>
+          <%  } %>
+          <a href="/admin/remove/<%=order.id%>" class="btn btn-danger">Remove</a>
+        </td>
+
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="admin-welcome">
+    <h1>Welcome.. <%=req.user.name%>(Admin)     <a class="btn btn-secondary" href="/users/logout">logout</a>  </h1>
+
+  </div>
+  <%- include('./partials/messages.ejs') %>
+
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <img style="width : 60px; height : 50px;" src="/images/admin/add.jpg" alt="">
+      <a type="button" href="/admin/addProduct" class="btn btn-primary mt-5">Add Product</a>
+    </div>
+    <div class="col-md-3">
+      <img style="width : 60px; height : 50px;" src="/images/admin/view.png" alt="">
+      <a type="button" href="/" class="btn btn-success mt-5">View Products</a>
+    </div>
+    <div class="col-md-3">
+      <img style="width : 60px; height : 50px;" src="/images/admin/order.png" alt="">
+      <a type="button" href="/admin/orders" class="btn btn-warning mt-5 ml-4">View Orders</a>
+    </div>
+    <div class="col-md-3">
+      <img style="width : 60px; height : 50px;" src="/images/admin/rent.jpg" alt="">
+      <a type="button" href="/admin/rentList" class="btn btn-info mt-5 ml-4">View RentList</a>
+    </div>
+  </div>
+</div>

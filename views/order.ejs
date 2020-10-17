@@ -1,0 +1,46 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Order Info</h1>
+    <p class="lead">Product Title : <%=product.title%></p>
+    <p class="lead">Order Type : <%=type%></p>
+    <% if(type === "buy"){ %>
+      <p class="lead">Cost : <%=product.price%> TK</p>
+    <% }else{ %>
+      <p class="lead">Cost : <%=product.price%> TK</p>
+      <p class="lead">Return money : <%=(product.price - ((product.price * 20)/100))%> TK</p>
+    <% } %>
+
+    <p class="lead">Recipient Name : <%=req.user.name%></p>
+    <p class="lead">Recipient Email : <%=req.user.email%></p>
+  </div>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Important!</strong> If you choose BKash as payment method, send the required amount to this number : +8801786534915 and enter the transaction id before confirming order.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="container">
+  <form class="" action="/products/confirm/<%=type%>/<%=product._id%>" method="post">
+    <div class="form-group">
+      <label for="address">Address : </label>
+      <input type="text" class="form-control" name="address" placeholder="Enter address">
+      <small class="form-text text-muted">Fill in the product delivery address briefly.</small>
+    </div>
+    <div class="form-group">
+      <label for="payment method">Select Payment Method : </label>
+      <select class="form-control" name="method">
+        <option value="BKash" selected>BKash</option>
+        <option value="Cash On Delivery">Cash On Delivery</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="transaction id">Transaction ID : </label>
+      <input type="text" class="form-control" name="transaction_id" placeholder="Enter transaction id">
+      <small class="form-text text-muted">Required only if payment method is bkash</small>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Confirm Order</a>
+  </form>
+</div>

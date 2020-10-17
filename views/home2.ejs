@@ -1,0 +1,56 @@
+<%- include('./partials/navbar.ejs') %>
+
+
+<div id="carouselExampleInterval" class="carousel slide mb-4" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="3000">
+      <a href="/products/5f8a79062db44a5150b1023d"><img class="carousel-img" src="/images/forza/forza_background.jpg" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="3000">
+      <a href="/products/5f7eb5ff9f95b74b7c632e7a"><img class="carousel-img" src="/images/re2/re2_background.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="3000">
+      <a href="/products/5f7ea9199f95b74b7c632e72"><img class="carousel-img" src="/images/cuphead/cuphead_background.jpg" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="3000">
+      <a href="/products/5f7eb0099f95b74b7c632e74"> <img class="carousel-img" src="/images/darksouls2/darksoul2_background.jpg" class="d-block w-100" alt="...">
+      </a>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<%- include('./partials/messages.ejs') %>
+
+
+<div class="container mt-2">
+  <div class="row">
+    <% products.forEach(function(product){ %>
+    <div class="col-md-3">
+
+      <div class="cards" style="width: 12rem; text-align : center;">
+        <img class="card-img-top" style="width : 150px; height : 180px" src="/<%= product.cover_img_src %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.title %></h5>
+          <p class="card-text">Release Date : <%= product.release_date%></p>
+        </div>
+        <div class="card-body">
+          <a href="/products/<%= product._id %>" class="btn btn-primary btn-block">View Product</a>
+        </div>
+      </div>
+
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+
+<%- include('./partials/footer.ejs') %>
