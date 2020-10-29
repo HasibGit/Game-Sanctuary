@@ -23,7 +23,6 @@ const Product = require('../models/Product.js');
 
 router.get('/',function(req,res){
      Product.find({},function(err,result){
-
           let numberOfProducts = result.length;
           let limit = 12;
           let numberOfPages = Math.ceil(numberOfProducts / limit);

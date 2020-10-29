@@ -52,18 +52,24 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="pagination">
 
-<nav aria-label="Page navigation example" style="margin-left : 500px;bottom : 0;width : 100%;">
-  <ul class="pagination">
+        <li class="page-item"><a class="btn btn-outline-info" class="page-link" href="/<%=(page - 1)%>">Previous</a></li>
 
-    <li class="page-item"><a class="btn btn-outline-info" class="page-link" href="/<%=(page - 1)%>">Previous</a></li>
+      <% for( let i = 1; i <= numberOfPages; i++){ %>
+        <li class="page-item"><a class="btn btn-outline-dark" class="page-link" href="/<%=i%>"><%=i%></a></li>
+      <% } %>
+        <li class="page-item"><a class="btn btn-outline-success" class="page-link" href="/<%=(page + 1)%>">Next</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <% for( let i = 1; i <= numberOfPages; i++){ %>
-    <li class="page-item"><a class="btn btn-outline-dark" class="page-link" href="/<%=i%>"><%=i%></a></li>
-  <% } %>
-    <li class="page-item"><a class="btn btn-outline-success" class="page-link" href="/<%=(page + 1)%>">Next</a></li>
-  </ul>
-</nav>
+
+
 
 
 <%- include('./partials/footer.ejs') %>
