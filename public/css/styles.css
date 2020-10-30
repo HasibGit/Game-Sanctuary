@@ -13,6 +13,10 @@
   display: flex;
 }
 
+.card-title-div{
+  height : 60px;
+}
+
 .cover-img{
   width: 200px;
   height : 230px;
