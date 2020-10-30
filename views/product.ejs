@@ -4,58 +4,63 @@
 <img class="background-img" src="/<%= product.background_img_src %>" alt="">
 
 <div class="product-details">
-  <div class="row">
-    <div class="col-md-2">
-      <img class="cover-img" src="/<%= product.cover_img_src %>" alt="">
-    </div>
-    <div class="col-md-10">
-      <h3><%= product.title %></h3>
 
-      <%  if(req.user && req.user.admin){ %>
-      <a href="/admin/update/<%=product.id%>" class="btn btn-light">Update</a>
-      <a href="/admin/delete/<%=product.id%>" class="btn btn-light">Delete</a>
-      <%  }else{ %>
-      <a href="/products/buy/<%=product.id%>" class="btn btn-light">Buy (<%=product.price%> TK)</a>
-      <a href="/products/rent/<%=product.id%>" class="btn btn-light">Rent(<%=((product.price * 20)/100)%> TK)</a>
-      <%  } %>
-
-      <p><em>Release Date: </em><%= product.release_date %></p>
-      <p><em>Genre: </em> <%= product.genre %></p>
-      <p><em>Platform: </em> <%= product.platform %></p>
-    </div>
+  <div class="product-details-1">
+    <img class="cover-img" src="/<%= product.cover_img_src %>" alt="">
   </div>
-</div>
+  <div class="product-details-2">
+    <h3><%= product.title %></h3>
 
+    <%  if(req.user && req.user.admin){ %>
+    <a href="/admin/update/<%=product.id%>" class="btn btn-light">Update</a>
+    <a href="/admin/delete/<%=product.id%>" class="btn btn-light">Delete</a>
+    <%  }else{ %>
+    <a href="/products/buy/<%=product.id%>" class="btn btn-light">Buy (<%=product.price%> TK)</a>
+    <a href="/products/rent/<%=product.id%>" class="btn btn-light">Rent(<%=((product.price * 20)/100)%> TK)</a>
+    <%  } %>
+
+    <p><em>Release Date: </em><%= product.release_date %></p>
+    <p><em>Genre: </em> <%= product.genre %></p>
+    <p><em>Platform: </em> <%= product.platform %></p>
+  </div>
+
+
+</div>
 
 
 <div class="rating-and-esrb">
-  <div class="row">
-    <div class="col-md-4">
-      <img class="esrb-img" src="/images/esrb.png" alt="">
-      <p class="esrb-text">Blood, Drug Reference, Intense Violence, Strong Language</p>
-    </div>
-    <div class="col-md-8">
-      <img class="metacritic-img" src="/images/metacritic.png" title="Metacritic Rating" alt="">
-      <div class="score">
-        <h1 class="rating"><%=product.rating%></h1>
-      </div>
-    </div>
+  <img class="esrb-img" src="/images/esrb.png" alt="">
+  <p class="esrb-text">Blood, Drug Reference, Intense Violence, Strong Language</p>
+  <img class="metacritic-img" src="/images/metacritic.png" title="Metacritic Rating" alt="">
+  <div class="score">
+    <h1 class="rating"><%=product.rating%></h1>
   </div>
 </div>
 
+
 <div class="gameplay">
   <h3 style="margin-bottom : 10px;">Gameplay Screenshots</h3>
+
   <div class="row">
     <div class="col-md-4">
       <img class="screenshot" src="/<%= product.screenShot_1%>" alt="">
+
     </div>
     <div class="col-md-4">
       <img class="screenshot" src="/<%= product.screenShot_2%>" alt="">
+
     </div>
     <div class="col-md-4">
       <img class="screenshot" src="/<%= product.screenShot_3%>" alt="">
+
     </div>
+
   </div>
-  <h3 style="margin-top : 20px;">Summery</h3>
-  <p><%=product.description%></p>
+
+
+
+  <h3 style="margin-top : 30px; margin-bottom : 10px;">Summery</h3>
+  <p style="margin-bottom : 100px;"><%=product.description%></p>
 </div>
+
+<%- include('./partials/footer.ejs') %>

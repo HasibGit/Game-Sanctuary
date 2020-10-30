@@ -10,6 +10,7 @@
   width: 100%;
   bottom : 200px;
   color : white;
+  display: flex;
 }
 
 .cover-img{
@@ -25,50 +26,33 @@
   height : 270px;
 }
 
+.rating-and-esrb{
+  display: flex;
+  position: relative;
+  bottom: 110px;
+  padding : 15px;
+}
+
 .esrb-img{
   width: 100px;
   height : 130px;
-  margin : 10px;
-  position: relative;
-  bottom: 150px;
-  left : 20px;
 }
 
 .metacritic-img{
   width: 115px;
   height : 130px;
-  margin : 10px;
-  position: relative;
-  bottom: 150px;
 }
 
-.esrb-text{
-  position: relative;
-  bottom: 150px;
-  left : 20px;
-}
 .score{
   background-color: #fddb3a;
   width: 130px;
   height : 130px;
-  position: relative;
-  bottom: 285px;
-  left: 140px;
 }
 
 .rating{
   font-size: 70px;
-  position: relative;
-  left: 18px;
-  top: 20px;
   color: white;
   font-family: 'Secular One', sans-serif;
-}
-
-.gameplay{
-  padding : 20px;
-  position: relative;
-  bottom: 210px;
 }
 
 .carousel{
@@ -81,11 +65,22 @@
 }
 
 .admin-welcome{
-  height : 70px;
+  /* height : 100px; */
   background-color: #373a40;
   text-align: center;
   color : white;
   border: 2px solid red;
+  display: flex;
+}
+.div1{
+  display: flex;
+  flex : 1;
+}
+.div2{
+  position: relative;
+  left : 50px;
+  top : 10px;
+  flex: 1;
 }
 
 .page-item{
@@ -106,4 +101,7 @@ a{
 
 .footer-content{
   color : white;
+}
+.gameplay{
+  padding : 15px;
 }

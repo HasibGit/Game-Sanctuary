@@ -1,6 +1,12 @@
 <div class="container mt-5">
   <div class="admin-welcome">
-    <h1>Welcome.. <%=req.user.name%>(Admin)     <a class="btn btn-secondary" href="/users/logout">logout</a>  </h1>
+    <div class="div1">
+      <h1>Welcome.. <%=req.user.name%>(Admin)</h1>
+    </div>
+    <div class="div2">
+      <a class="btn btn-secondary" href="/users/logout">logout</a>
+    </div>
+
 
   </div>
   <%- include('./partials/messages.ejs') %>
