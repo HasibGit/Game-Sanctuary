@@ -36,19 +36,17 @@
     <% products.forEach(function(product){ %>
     <div class="col-md-3">
 
-      <div class="cards" style="width: 12rem; text-align : center;">
-        <img class="card-img-top" style="width : 150px; height : 180px" src="/<%= product.cover_img_src %>" alt="Card image cap">
+      <div class="cards mb-3" style="width: 15rem; text-align : center;">
+        <img class="card-img-top mt-3" style="width : 150px; height : 180px" src="/<%= product.cover_img_src %>" alt="Card image cap">
         <div class="card-body">
           <div class="card-title-div">
             <h5 class="card-title"><%= product.title %></h5>
           </div>
           <p class="card-text">Release Date : <%= product.release_date%></p>
-        </div>
-        <div class="card-body">
+
           <a href="/products/<%= product._id %>" class="btn btn-primary btn-block">View Product</a>
         </div>
       </div>
-
     </div>
     <% }) %>
   </div>
