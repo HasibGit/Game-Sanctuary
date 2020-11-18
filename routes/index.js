@@ -46,6 +46,16 @@ router.get('/',function(req,res){
           res.render('home', {products : products, req : req, numberOfPages : numberOfPages, page : page});
      });
 });
+
+router.get('/policy', function(req,res){
+   res.render('policy.ejs', {req : req});
+});
+
+router.get('/methods', function(req,res){
+   res.render('methods.ejs', {req : req});
+});
+
+
 router.get('/:page',function(req,res){
      Product.find({},function(err,result){
 

@@ -9,6 +9,21 @@
   box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
 }
 
+.policy-header{
+  border: 3px solid black;
+  text-align: center;
+  margin: 10px;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.policy-body{
+  margin-top : 50px;
+}
+
+.policy-reg{
+  color : blue;
+}
+
 
 
 .product-details{
