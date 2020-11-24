@@ -35,6 +35,10 @@ const OrderSchema = new mongoose.Schema({
       type : String,
       default : ''
     },
+    mail_sent : {
+      type : Boolean,
+      default : false
+    },
     date : {
       type : Date,
       default : Date.now

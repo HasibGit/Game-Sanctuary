@@ -5,6 +5,11 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 
+const {
+  ensureAuthenticated
+} = require('../config/auth.js');
+
+
 // User Model
 const User = require('../models/User.js');
 
@@ -23,13 +28,15 @@ router.post('/register', (req, res) => {
   const {
     name,
     email,
+    address,
+    mobileNo,
     password,
     password2
   } = req.body;
   let errors = [];
 
   // Check required fields
-  if (!name || !email || !password || !password2) {
+  if (!name || !email || !address || !mobileNo || !password || !password2) {
     errors.push({
       msg: 'Please fill in all fields'
     });
@@ -54,6 +61,8 @@ router.post('/register', (req, res) => {
       errors,
       name,
       email,
+      address,
+      mobileNo,
       password,
       password2
     });
@@ -72,6 +81,8 @@ router.post('/register', (req, res) => {
             errors,
             name,
             email,
+            address,
+            mobileNo,
             password,
             password2
           });
@@ -80,6 +91,8 @@ router.post('/register', (req, res) => {
             // es6 shorthadn style
             name,
             email,
+            address,
+            mobileNo,
             password
           });
 
@@ -112,6 +125,31 @@ router.post('/login', (req, res, next) => {
            failureFlash: true
       })(req,res,next);
 });
+
+// edit Profile
+
+router.get('/editProfile', ensureAuthenticated, (req,res) => {
+  res.render('editProfile', {req : req});
+});
+
+router.post('/editProfile', ensureAuthenticated, (req,res) => {
+    const {
+      name,
+      address,
+      mobileNo
+    } = req.body;
+
+    User.updateOne({_id: req.user._id}, {name: name, address: address, mobileNo: mobileNo},function(err){
+           if(err){
+             console.log(err);
+           }else{
+             req.flash('success_msg','Your profile has been updated successfully.');
+             res.redirect('/');
+           }
+    });
+
+});
+
 
 
 // Logout Handle

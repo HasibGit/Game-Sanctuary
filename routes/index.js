@@ -138,16 +138,56 @@ router.get('/sort/Price',function(req,res){
      });
 });
 
+
+function findMatches(wordToMatch, cities){
+  return cities.filter(place => {
+    const regex = new RegExp(wordToMatch, 'gi');   //  gi - global case insensitive
+    return place.match(regex);
+  });
+}
+
+
+
 // search query
 router.post('/search',function(req,res){
      var title = req.body.search;
      title = _.startCase(title);
-     Product.find({title : title},function(err,result){
-       res.render('home2', {
-         req: req,
-         products: result
-       });
+
+     // Product.find({title : title},function(err,result){
+     //   res.render('home2', {
+     //     req: req,
+     //     products: result
+     //   });
+     // });
+
+     let matchedProducts = [];
+     Product.find({}, function(err,result){
+         const titles = result.map(product => product.title);
+         matchedProducts = findMatches(title,titles);
+
+         // let matches = [];
+         // matchedProducts.forEach(title, function(err,result){
+         //   matches.push({'title' : result.title});
+         // });
+         //
+         // console.log(matches);
+
+        let products = [];
+
+        for(let i = 0;i < result.length;i++){
+          for(let j = 0;j < matchedProducts.length; j++){
+            if(result[i].title === matchedProducts[j]){
+              products.push(result[i]);
+            }
+          }
+        }
+
+        res.render('home2', {
+             req: req,
+             products: products
+        });
      });
+
 });
 
 

@@ -14,6 +14,8 @@
 
     <p class="lead">Recipient Name : <%=req.user.name%></p>
     <p class="lead">Recipient Email : <%=req.user.email%></p>
+    <p class="lead">Recipient Address : <%=req.user.address%></p>
+    <p class="lead">Recipient Mobile No : <%=req.user.mobileNo%></p>
   </div>
 </div>
 
@@ -26,11 +28,6 @@
 
 <div class="container">
   <form class="" action="/products/confirm/<%=type%>/<%=product._id%>" method="post">
-    <div class="form-group">
-      <label for="address">Address : </label>
-      <input type="text" class="form-control" name="address" placeholder="Enter address">
-      <small class="form-text text-muted">Fill in the product delivery address briefly.</small>
-    </div>
     <div class="form-group">
       <label for="payment method">Select Payment Method : </label>
       <select class="form-control" name="method">

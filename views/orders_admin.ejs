@@ -1,6 +1,9 @@
 <div class="container">
   <div class="admin-welcome">
     <h1>All Orders</h1>
+    <div class="div2">
+      <a class="btn btn-secondary" href="/admin/adminPanal">Admin Panal</a>
+    </div>
   </div>
   <%-include('./partials/messages.ejs')%>
   <table class="table mt-5">
@@ -27,7 +30,11 @@
         <td scope="row"><%= order.transaction_id %></td>
         <% } %>
         <td scope="row">
-          <a href="/admin/sendEmail/<%=order._id%>" class="btn btn-info">Send Email</a>
+          <% if(order.mail_sent === true){ %>
+            <a href="/admin/sendEmail/<%=order._id%>" class="btn btn-info disabled">Send Email</a>
+          <% }else{ %>
+            <a href="/admin/sendEmail/<%=order._id%>" class="btn btn-info">Send Email</a>
+        <%  } %>
           <%  if(order.order_type === "rent"){ %>
           <a href="/admin/sendToRent/<%=order._id%>" class="btn btn-success">Send To Rent List</a>
           <%  } %>

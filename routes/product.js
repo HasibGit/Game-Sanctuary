@@ -42,7 +42,7 @@ router.post('/confirm/:type/:productId',ensureAuthenticated,function(req,res){
   Product.findById(id, function(err, product) {
       const customer_name = req.user.name;
       const customer_email = req.user.email;
-      const customer_address = req.body.address;
+      const customer_address = req.user.address;
       const product_name = product.title;
       const order_type = req.params.type;
       var price;
@@ -65,7 +65,7 @@ router.post('/confirm/:type/:productId',ensureAuthenticated,function(req,res){
         transaction_id
       });
       newOrder.save();
-      req.flash('success_msg','Your order has been submitted successfully. Please check your email for confirmation message.');
+      req.flash('success_msg','Your order has been submitted successfully. Please check your email for confirmation message which will be sent within 24 hours.');
       res.redirect('/');
   });
 });

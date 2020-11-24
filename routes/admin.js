@@ -334,8 +334,14 @@ router.get('/sendEmail/:orderId', ensureAuthenticated, function(req, res) {
               console.log(err);
             }else{
               console.log('email sent');
-              req.flash('success_msg', 'Email has been sent successfully');
-              res.redirect('/admin/orders');
+              Order.updateOne({_id : order._id},{mail_sent : true}, function(err){
+                if(err){
+                  console.log(err);
+                }else{
+                  req.flash('success_msg', 'Email has been sent successfully');
+                  res.redirect('/admin/orders');
+                }
+              });
             }
           });
       }
